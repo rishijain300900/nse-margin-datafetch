@@ -11,9 +11,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/rishijain300900/nse-data-scrapper/pkg/adddata"
-	"github.com/rishijain300900/nse-data-scrapper/pkg/readcsv"
-	"github.com/rishijain300900/nse-data-scrapper/pkg/updatedata"
+	"github.com/rishijain300900/nse-margin-datafetch/pkg/adddata"
+	"github.com/rishijain300900/nse-margin-datafetch/pkg/readcsv"
+	"github.com/rishijain300900/nse-margin-datafetch/pkg/updatedata"
 )
 
 var (

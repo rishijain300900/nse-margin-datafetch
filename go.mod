@@ -1,4 +1,4 @@
-module github.com/rishijain300900/nse-data-scrapper
+module github.com/rishijain300900/nse-margin-datafetch
 
 go 1.16
 
