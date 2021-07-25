@@ -34,12 +34,17 @@ func init() {
 
 }
 
-//sat, sun will not run
-//err handling on line 38
 func PerformScheduling() {
+	if time.Now().Weekday() == time.Saturday || time.Now().Weekday() == time.Sunday {
+		log.Println("Its a weekend")
+		return
+	}
 	for fileno <= 6 {
 		link := nseUrl + date + "_" + strconv.Itoa(fileno) + nseFormat
-		response, _ := http.Get(link)
+		response, err := http.Get(link)
+		if err != nil {
+			log.Fatal(err)
+		}
 		if response.StatusCode == 200 {
 			name := storeData(response.Body)
 			data := readcsv.ReadCsv(name)
@@ -54,7 +59,7 @@ func PerformScheduling() {
 
 func storeData(resBody io.ReadCloser) string {
 	name := " C_VAR1_" + date + "_" + strconv.Itoa(fileno) + ".csv"
-	file, err := os.Create(filepath.Join("Data", filepath.Base(name)))
+	file, err := os.Create(filepath.Join("data", filepath.Base(name)))
 	if err != nil {
 		log.Fatal(err)
 	}
