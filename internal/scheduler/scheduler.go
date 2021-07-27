@@ -12,8 +12,7 @@ import (
 	"strconv"
 	"time"
 
-	add_to_db "github.com/rishijain300900/nse-margin-datafetch/internal/db/add_to_db"
-	update_db "github.com/rishijain300900/nse-margin-datafetch/internal/db/update_db"
+	dp_ops "github.com/rishijain300900/nse-margin-datafetch/internal/db"
 	read "github.com/rishijain300900/nse-margin-datafetch/internal/read"
 )
 
@@ -100,10 +99,10 @@ func sqladd(data [][]string) {
 	}
 	defer db.Close()
 	if fileno == 1 {
-		add_to_db.ClearAndInsertRows(data, db)
+		dp_ops.ClearAndInsertRows(data, db)
 		log.Println("Data added to Database")
 	} else {
-		update_db.UpdateRows(data, db)
+		dp_ops.UpdateRows(data, db)
 		log.Println("Database Updated")
 	}
 }
